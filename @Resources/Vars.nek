@@ -1,0 +1,9 @@
+[Variables]
+Scale=1
+Skin_Width=(500*#Scale#)
+Skin_Height=(500*#Scale#)
+FontOpacity=100
+FontFace=Samsung Sharp Sans
+
+FontColor=245,235,239
+TimeFormat=H

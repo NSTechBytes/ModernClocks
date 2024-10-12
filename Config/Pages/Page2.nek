@@ -1,0 +1,113 @@
+[Update_S]
+Meter=String
+Text=Update
+FontFace=Roboto
+FontWeight=900
+AntiAlias=1
+FontSize=20
+FontColor=255,255,255
+X=150
+Y=30
+
+
+
+
+[Version_S]
+Meter=String
+Text=Current Version
+FontFace=Roboto
+AntiAlias=1
+FontSize=12
+FontColor=255,255,255
+X=150
+Y=100
+
+
+[Scale_Shape]
+Meter=Shape
+Shape=Rectangle 0,0,100,25,4 | StrokeWidth 0 | Fill Color 231, 143, 54,100
+X=240r
+Y=r
+DynamicVariables=1
+
+
+[Scale String]
+Meter=String
+StringAlign=Center
+FontColor=255,255,255
+FontFace=Roboto
+FontSize=11
+X=(100/2)r
+Y=2r
+Text=v//#Version#
+AntiAlias=1
+StringAlign=CenterCenter
+
+
+[UodateBox]
+Meter=Shape
+Shape=Rectangle 0,0,100,25,4 | StrokeWidth 0 | Fill Color 56, 170, 26,100
+X=-50r
+Y=50r
+DynamicVariables=1
+
+
+
+
+
+[Update String]
+Meter=String
+StringAlign=Center
+FontColor=255,255,255
+FontFace=Roboto
+FontSize=11
+X=(100/2)r
+Y=2r
+Text=Not Available
+AntiAlias=1
+StringAlign=CenterCenter
+
+[UodateBox_Avail]
+Meter=Shape
+Shape=Rectangle 0,0,100,25,4 | StrokeWidth 0 | Fill Color  183, 0, 1
+X=390
+Y=152
+DynamicVariables=1
+Group=Update
+Hidden=1
+Leftmouseupaction=["https://github.com/NSTechBytes/ModernClocks/releases"]
+
+[Update String1]
+Meter=String
+StringAlign=Center
+FontColor=255,255,255
+FontFace=Roboto
+FontSize=11
+X=(100/2)r
+Y=2r
+Text=Available
+AntiAlias=1
+StringAlign=CenterCenter
+Group=Update
+Hidden=1
+
+
+
+[WebParser]
+Measure=WebParser
+URL=https://raw.githubusercontent.com/NSTechBytes/ModernClocks/main/%40Resources/Version.nek
+RegExp==(.*)$
+FinishAction=[!UpdateMeasure mver]
+Group=checkForBeta
+CodePage=65001
+[mVer]
+Measure=WebParser
+CodePage=65001
+URL=[WebParser]
+StringIndex=1
+Ifcondition=mVer = #Version#
+IfTrueAction=[!SetVariable VersionStatus "0"][!UpdateMeter *][!Redraw]
+IfCondition2=mVer > #Version#
+IfTrueAction2=[!SetVariable VersionStatus "1"][!ShowMeterGroup Update][!UpdateMeter *][!Redraw]
+IfCondition3=mVer < #Version#
+IfTrueAction3=[!SetVariable VersionStatus "2"][!UpdateMeter *][!Redraw]

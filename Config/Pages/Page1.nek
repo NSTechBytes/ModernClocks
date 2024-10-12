@@ -1,0 +1,176 @@
+[General_S]
+Meter=String
+Text=General
+FontFace=Roboto
+FontWeight=900
+AntiAlias=1
+FontSize=20
+FontColor=255,255,255
+X=150
+Y=30
+
+;========================================================================================================================================================;
+;                                                                          Scale                                                                         ;
+;========================================================================================================================================================;
+
+[Scale_S]
+Meter=String
+Text=Size
+FontFace=Roboto
+AntiAlias=1
+FontSize=12
+FontColor=255,255,255
+X=150
+Y=100
+
+[Scale_Shape]
+Meter=Shape
+Shape=Rectangle 0,0,100,25,4 | StrokeWidth 0 | Fill Color 231, 143, 54,100
+X=240r
+Y=r
+DynamicVariables=1
+LeftMouseUpAction=[!PluginBang "MeterInput ExecuteBatch 1"]
+
+[Scale String]
+Meter=String
+StringAlign=Center
+FontColor=255,255,255
+FontFace=Roboto
+FontSize=11
+X=(100/2)r
+Y=3r
+Text=#Scale#
+AntiAlias=1
+StringAlign=CenterCenter
+
+[Div]
+Meter=Shape
+Shape=Rectangle 0,0,340,1 | StrokeWidth 0 | Fill Color 255,255,255
+DynamicVariables=1
+X=150
+Y=30r
+
+;========================================================================================================================================================;
+;                                                                          FontColor                                                                     ;
+;========================================================================================================================================================;
+
+[Font_S]
+Meter=String
+Text=FontColor
+FontFace=Roboto
+AntiAlias=1
+FontSize=12
+FontColor=255,255,255
+X=150
+Y=140
+
+[Color]
+Meter=Shape
+Shape=Rectangle 0,0,20,20,15 | StrokeWidth 0 | Fill Color #FontColor#
+DynamicVariables=1
+X=320r
+Y=r
+LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=FontColor" "FileName=#@#Vars.nek"][!Refresh *]
+
+[MeterFontColor]
+Meter=String
+StringAlign=Center
+FontFace=Segoe UI
+FontSize=12
+X=260
+Y=r
+W=100
+Text=
+AntiAlias=1
+SolidColor=#FontColor#
+LeftMouseUpAction=["#@#Addons\RainRGB4.exe" "VarName=FontColor" "FileName=#@#Vars.nek"][!Refresh *]
+FinishAction=[!Refresh *]
+
+[Div_2]
+Meter=Shape
+Shape=Rectangle 0,0,340,1 | StrokeWidth 0 | Fill Color 255,255,255
+DynamicVariables=1
+X=150
+Y=30r
+
+;========================================================================================================================================================;
+;                                                                          FontOpacity                                                                   ;
+;========================================================================================================================================================;
+
+[opacity_S]
+Meter=String
+Text=FontOpacity
+FontFace=Roboto
+AntiAlias=1
+FontSize=12
+FontColor=255,255,255
+X=150
+Y=10r
+
+[Opacity_Shape]
+Meter=Shape
+Shape=Rectangle 0,0,100,25,4 | StrokeWidth 0 | Fill Color 231, 143, 54,100
+X=240r
+Y=r
+DynamicVariables=1
+LeftMouseUpAction=[!PluginBang "MeterInput2 ExecuteBatch 1"]
+
+
+[Opacity_F]
+Meter=String
+StringAlign=Center
+FontColor=255,255,255
+FontFace=Segoe UI
+FontSize=11
+X=(100/2)r
+Y=r
+Text=#FontOpacity#
+AntiAlias=1
+StringAlign=CenterCenter
+
+;========================================================================================================================================================;
+;                                                                        Measures                                                                        ;
+;========================================================================================================================================================;
+
+[MeterInput]
+Measure=Plugin
+Plugin=InputText.dll
+StringAlign=Center
+FontFace=Segoe UI
+FontSize=12
+X=390
+Y=100
+W=100
+H=25
+AntiAlias=1
+FocusDismiss=1
+SolidColor=231, 143, 54
+Command1=[!WriteKeyValue Variables Scale "$UserInput$""#@#Vars.nek"][!RainmeterRefreshApp]
+DefaultValue="#Scale#"
+DynamicVariables=1
+
+
+
+[MeterInput2]
+Measure=Plugin
+Plugin=InputText.dll
+StringAlign=Center
+FontFace=Segoe UI
+FontSize=12
+X=390
+Y=180
+W=100
+H=25
+AntiAlias=1
+FocusDismiss=1
+SolidColor=231, 143, 54
+Command1=[!WriteKeyValue Variables FontOpacity "$UserInput$""#@#Vars.nek"][!RainmeterRefreshApp]
+DefaultValue="#FontOpacity#"
+DynamicVariables=1
+
+
+
+
+
+
+
